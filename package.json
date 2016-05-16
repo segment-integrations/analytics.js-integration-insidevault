@@ -1,6 +1,6 @@
 {
-  "name": "analytics.js-integration-insidevault",
-  "description": "The Insidevault analytics.js integration.",
+  "name": "analytics.js-integration-quanticmind",
+  "description": "The QuanticMind analytics.js integration.",
   "author": "Segment <friends@segment.com>",
   "license": "MIT",
   "main": "lib/index.js",
@@ -12,13 +12,13 @@
     "npm": ">=2.7.0"
   },
   "repository": {
-    "url": "https://github.com/segment-integrations/analytics.js-integration-insidevault.git",
+    "url": "https://github.com/segment-integrations/analytics.js-integration-quanticmind.git",
     "type": "git"
   },
   "bugs": {
-    "url": "https://github.com/segment-integrations/analytics.js-integration-insidevault/issues"
+    "url": "https://github.com/segment-integrations/analytics.js-integration-quanticmind/issues"
   },
-  "homepage": "https://segment.com/docs/integrations/insidevault/",
+  "homepage": "https://segment.com/docs/integrations/quanticmind/",
   "dependencies": {},
   "devDependencies": {
     "duo": "0.12.x",

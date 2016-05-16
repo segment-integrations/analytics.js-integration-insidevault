@@ -1,7 +1,7 @@
 {
-  "name": "analytics.js-integration-insidevault",
-  "repo": "segment-integrations/analytics.js-integration-insidevault",
-  "description": "The Insidevault analytics.js integration.",
+  "name": "analytics.js-integration-quanticmind",
+  "repo": "segment-integrations/analytics.js-integration-quanticmind",
+  "description": "The QuanticMind analytics.js integration.",
   "version": "1.0.4",
   "license": "MIT",
   "main": "lib/index.js",
