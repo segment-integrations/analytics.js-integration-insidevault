@@ -3,11 +3,11 @@ var Analytics = require('analytics.js-core').constructor;
 var integration = require('analytics.js-integration');
 var sandbox = require('clear-env');
 var tester = require('analytics.js-integration-tester');
-var InsideVault = require('../lib/');
+var QuanticMind = require('../lib/');
 
-describe('InsideVault', function() {
+describe('QuanticMind', function() {
   var analytics;
-  var insideVault;
+  var quanticMind;
   var options = {
     clientId: 'test17',
     domain: 'testdomain.com',
@@ -19,21 +19,21 @@ describe('InsideVault', function() {
 
   beforeEach(function() {
     analytics = new Analytics();
-    insideVault = new InsideVault(options);
-    analytics.use(InsideVault);
+    quanticMind = new QuanticMind(options);
+    analytics.use(QuanticMind);
     analytics.use(tester);
-    analytics.add(insideVault);
+    analytics.add(quanticMind);
   });
 
   afterEach(function() {
     analytics.restore();
     analytics.reset();
-    insideVault.reset();
+    quanticMind.reset();
     sandbox();
   });
 
   it('should have the right settings', function() {
-    analytics.compare(InsideVault, integration('InsideVault')
+    analytics.compare(QuanticMind, integration('QuanticMind')
       .global('_iva')
       .option('clientId', '')
       .option('domain', ''));
@@ -41,7 +41,7 @@ describe('InsideVault', function() {
 
   describe('before loading', function() {
     beforeEach(function() {
-      analytics.stub(insideVault, 'load');
+      analytics.stub(quanticMind, 'load');
     });
 
     describe('#initialize', function() {
@@ -49,7 +49,7 @@ describe('InsideVault', function() {
         analytics.initialize();
         analytics.page();
         analytics.assert(window._iva instanceof Array);
-        analytics.called(insideVault.load);
+        analytics.called(quanticMind.load);
       });
 
       it('should pass in clientId', function() {
@@ -57,7 +57,7 @@ describe('InsideVault', function() {
         analytics.stub(window._iva, 'push');
         analytics.initialize();
         analytics.page();
-        analytics.called(window._iva.push, ['setClientId', insideVault.options.clientId]);
+        analytics.called(window._iva.push, ['setClientId', quanticMind.options.clientId]);
       });
 
       it('should pass in userId', function() {
@@ -74,23 +74,23 @@ describe('InsideVault', function() {
         analytics.stub(window._iva, 'push');
         analytics.initialize();
         analytics.page();
-        analytics.called(window._iva.push, ['setDomain', insideVault.options.domain]);
+        analytics.called(window._iva.push, ['setDomain', quanticMind.options.domain]);
       });
 
       it('should not pass in domain if blank', function() {
         window._iva = [];
-        insideVault.options.domain = null;
+        quanticMind.options.domain = null;
         analytics.stub(window._iva, 'push');
         analytics.initialize();
         analytics.page();
-        analytics.didNotCall(window._iva.push, ['setDomain', insideVault.options.domain]);
+        analytics.didNotCall(window._iva.push, ['setDomain', quanticMind.options.domain]);
       });
     });
   });
 
   describe('loading', function() {
     it('should load', function(done) {
-      analytics.load(insideVault, done);
+      analytics.load(quanticMind, done);
     });
   });
 
@@ -153,7 +153,7 @@ describe('InsideVault', function() {
       });
 
       it('should track multiple events', function() {
-        insideVault.options.events = [
+        quanticMind.options.events = [
           { key: 'completed order', value: 'event1' },
           { key: 'completed order', value: 'event2' }
         ];
